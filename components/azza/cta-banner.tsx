@@ -1,5 +1,0 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
-
-export function CTABanner() { return <section id="market" className="relative overflow-hidden bg-accent py-20 text-primary"><div className="absolute right-0 top-0 h-full w-1/2 opacity-25"><Image src="/images/azza/photos/gift.webp" alt="Gift tin and bakery cookies ready for sharing" fill className="object-cover" /></div><div className="relative mx-auto max-w-7xl px-6 lg:px-8"><div className="max-w-2xl"><p className="mb-4 text-sm uppercase tracking-[0.3em]">Meet us at the table</p><h2 className="font-serif text-5xl leading-none sm:text-7xl">Good food<br /><em className="font-normal">travels better.</em></h2><p className="mt-6 max-w-md text-lg text-primary/75">Find the next bake, kit, and cozy thing coming out of the oven.</p><Link href="/shop" className="azza-btn mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-bold text-primary-foreground hover:bg-primary/90">Find a sweet thing <ArrowUpRight className="h-4 w-4" /></Link></div></div></section> }
