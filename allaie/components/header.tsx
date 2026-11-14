@@ -1,15 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const links = [
-  { label: "Philosophy", href: "#philosophy" },
-  { label: "Story", href: "#story" },
-  { label: "Practice", href: "#practice" },
-  { label: "Moods", href: "#moods" },
-  { label: "Approach", href: "#approach" },
+  { label: "Story", href: "/#story" },
+  { label: "Practice", href: "/#practice" },
+  { label: "Moods", href: "/#moods" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Journal", href: "/journal" },
 ]
 
 export function Header() {
@@ -27,6 +28,8 @@ export function Header() {
   }, [])
 
   const light = !scrolled && !open
+  const home = usePathname() === "/"
+  const href = (h: string) => (home && h.startsWith("/#") ? h.slice(1) : h)
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6">
@@ -36,19 +39,19 @@ export function Header() {
           light ? "border-primary-foreground/15 bg-primary/25 text-primary-foreground backdrop-blur-md" : "is-scrolled text-primary",
         )}
       >
-        <a href="#top" className="aa-name text-[13px] font-normal sm:text-[15px]" aria-label="Allaie Aisha, back to top">
+        <a href="/" className="aa-name text-[13px] font-normal sm:text-[15px]" aria-label="Allaie Aisha, home">
           ALLAIE AISHA
         </a>
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Sections">
           {links.map(l => (
-            <a key={l.href} href={l.href} className="mh-link-underline mh-eyebrow text-[10.5px] opacity-80 hover:opacity-100 mh-transition">
+            <a key={l.href} href={href(l.href)} className="mh-link-underline mh-eyebrow text-[10.5px] opacity-80 hover:opacity-100 mh-transition">
               {l.label}
             </a>
           ))}
         </nav>
         <div className="flex items-center gap-2">
           <a
-            href="#contact"
+            href={href("/#contact")}
             className={cn(
               "mh-btn hidden rounded-full px-5 py-2.5 text-[10.5px] font-semibold uppercase tracking-[0.22em] sm:inline-flex",
               light ? "bg-accent text-primary" : "bg-primary text-primary-foreground",
@@ -63,8 +66,8 @@ export function Header() {
       </div>
       {open && (
         <nav className="mx-1 mt-2 rounded-[1.5rem] border border-primary/10 bg-background p-3 shadow-lg lg:hidden" aria-label="Sections">
-          {[...links, { label: "Work with Allaie", href: "#contact" }].map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block rounded-2xl px-4 py-3 font-serif text-2xl text-primary hover:bg-card">
+          {[...links, { label: "Work with Allaie", href: "/#contact" }].map(l => (
+            <a key={l.href} href={href(l.href)} onClick={() => setOpen(false)} className="block rounded-2xl px-4 py-3 font-serif text-2xl text-primary hover:bg-card">
               {l.label}
             </a>
           ))}

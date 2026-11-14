@@ -4,6 +4,8 @@ import { Monogram } from "@/components/monogram"
 import { MoodSelector } from "@/components/mood-selector"
 import { PageMotion } from "@/components/page-motion"
 import { TopoDrift } from "@/components/topo-drift"
+import { SiteFooter } from "@/components/site-footer"
+import { articles } from "@/lib/articles"
 import { approach, credentials, disciplines, imagery, kindWords, person, philosophy, press, STUDIO_URL, story } from "@/lib/content"
 
 function Letters({ text, delay = 0 }: { text: string; delay?: number }) {
@@ -252,6 +254,32 @@ export default function Home() {
           </section>
         )}
 
+        {/* ---------- Journal ---------- */}
+        <section id="journal" className="bg-paper">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <Eyebrow className="text-walnut">The Journal</Eyebrow>
+                <h2 data-reveal className="mt-8 font-serif text-5xl font-light leading-[1.02] text-primary sm:text-6xl">
+                  Notes on designing <em className="text-walnut">for feeling.</em>
+                </h2>
+              </div>
+              <a href="/journal" className="mh-eyebrow mh-link-underline inline-flex items-center gap-2 text-[10.5px] text-primary">All articles <ArrowUpRight className="h-4 w-4" /></a>
+            </div>
+            <div className="mt-14 grid gap-10 md:grid-cols-3">
+              {articles.slice(0, 3).map(a => (
+                <a key={a.slug} href={`/journal/${a.slug}`} className="group block" data-reveal>
+                  <div className="aa-frame relative aspect-[4/3] bg-deep-green">
+                    <img src={a.image} alt={a.imageAlt} loading="lazy" className="mh-image-zoom absolute inset-0 h-full w-full object-cover" />
+                  </div>
+                  <p className="mh-eyebrow mt-5 text-[9.5px] text-walnut">{a.category} · {a.readMinutes} min read</p>
+                  <h3 className="mt-3 font-serif text-2xl leading-snug text-primary">{a.title}</h3>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ---------- Dusk band with tagline ---------- */}
         <section aria-label="Tagline" className="relative h-[70svh] min-h-[420px] overflow-hidden bg-deep-green">
           <div data-parallax="16" className="absolute inset-x-0 -top-[10%] h-[120%]">
@@ -322,15 +350,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-deep-green text-primary-foreground/60">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-14 text-center sm:flex-row sm:justify-between sm:text-left lg:px-8">
-          <div className="flex items-center gap-4 text-accent">
-            <Monogram className="w-10" />
-            <span className="aa-name text-xs">ALLAIE AISHA</span>
-          </div>
-          <p className="mh-eyebrow text-[9px]">© {new Date().getFullYear()} Allaie Aisha · {person.studio} · San Diego County</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   )
 }
