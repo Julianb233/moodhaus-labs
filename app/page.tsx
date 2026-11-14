@@ -8,7 +8,8 @@ import { IntroStatement } from "@/components/moodhaus/intro-statement"
 import { ParallaxGallery } from "@/components/moodhaus/parallax-gallery"
 import { PortfolioGrid } from "@/components/moodhaus/portfolio-grid"
 import { Process } from "@/components/moodhaus/process"
-import { Services } from "@/components/moodhaus/services"
+import { BeforeAfterShowcase } from "@/components/moodhaus/before-after-showcase"
+import { CapabilityJourney } from "@/components/moodhaus/capability-journey"
 import { Testimonials } from "@/components/moodhaus/testimonials"
 import { TrustBadges } from "@/components/moodhaus/trust-badges"
 import { VideoBand } from "@/components/moodhaus/video-band"
@@ -20,10 +21,11 @@ export default function HomePage() {
       <HomeMotion />
       <Hero />
       <TrustBadges />
+      <BeforeAfterShowcase />
+      <CapabilityJourney />
       <IntroStatement />
       <PortfolioGrid />
       <ParallaxGallery />
-      <Services />
       <VideoBand />
       <Process />
       <Testimonials />

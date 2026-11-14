@@ -28,6 +28,7 @@ export function HomeMotion() {
       gsap.set("[data-hero-lockup], [data-hero-cue]", { autoAlpha: 0 })
       gsap.set("[data-hero-copy], [data-hero-shade]", { autoAlpha: 1 })
       gsap.set("[data-word]", { opacity: 1 })
+      gsap.set("[data-video-copy]", { autoAlpha: 1 })
       return
     }
 
@@ -43,42 +44,44 @@ export function HomeMotion() {
       intro
         .to(heroPaths, { strokeDashoffset: 0, duration: 2.6, stagger: { each: 0.025, from: "random" }, ease: "power2.inOut" }, 0)
         .fromTo("[data-hero-lockup] > span > *", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 1.6, stagger: 0.14 }, 0.25)
-        .fromTo("[data-hero-cue]", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 }, 1.4)
+        .fromTo("[data-hero-cue-inner]", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 }, 1.4)
 
-      // Scroll story: lockup lifts away -> an arched window rises from the ground ->
-      // the arch opens to full-bleed coastal footage -> headline settles in.
+      // Scroll story: lockup lifts away -> a framed window rises into the centre ->
+      // the frame opens to full-bleed coastal footage -> headline settles in.
       // Clip-path is driven through a proxy so the browser never collapses equal inset values
       // (which would break GSAP's number-by-number string interpolation).
       const heroWindow = document.querySelector<HTMLElement>("[data-hero-window]")
       const narrow = window.innerWidth < 768
-      const arch = { t: 100, x: narrow ? 18 : 36, r: 999 }
+      const arch = { t: 100, x: narrow ? 18 : 36, b: 0, r: 6 }
       const paintArch = () => {
-        if (heroWindow) heroWindow.style.clipPath = `inset(${arch.t}% ${arch.x}% 0% ${arch.x}% round ${arch.r}px ${arch.r}px 0px 0px)`
+        if (heroWindow) heroWindow.style.clipPath = `inset(${arch.t}% ${arch.x}% ${arch.b}% ${arch.x}% round ${arch.r}px)`
       }
       paintArch()
 
+      // Timing (fractions of the pinned scroll): the lockup is gone before the arch reaches it,
+      // the arch rises, pauses as a framed view, then opens; the headline lands last and holds.
       const hero = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: "[data-hero]",
           start: "top top",
-          end: "+=220%",
+          end: "+=240%",
           pin: "[data-hero-stage]",
-          scrub: 1,
+          scrub: 1.1,
           anticipatePin: 1,
         },
       })
       hero
-        .to("[data-hero-cue]", { autoAlpha: 0, duration: 0.05 }, 0)
-        .to("[data-hero-lockup]", { yPercent: -22, scale: 0.82, autoAlpha: 0, filter: "blur(6px)", duration: 0.32, ease: "power1.in" }, 0)
-        .to("[data-hero-topo]", { scale: 1.2, duration: 0.7 }, 0)
-        .to(arch, { t: narrow ? 22 : 16, x: narrow ? 12 : 33, duration: 0.32, ease: "power2.out", onUpdate: paintArch }, 0.08)
-        .to(arch, { t: 0, x: 0, r: 0, duration: 0.38, ease: "power1.inOut", onUpdate: paintArch }, 0.42)
-        .to("[data-hero-video]", { scale: 1, duration: 0.8 }, 0.1)
-        .to("[data-hero-topo]", { autoAlpha: 0, duration: 0.2 }, 0.6)
-        .to("[data-hero-shade]", { autoAlpha: 1, duration: 0.25 }, 0.62)
-        .fromTo("[data-hero-copy]", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.22 }, 0.74)
-        .to({}, { duration: 0.08 })
+        .to("[data-hero-cue]", { autoAlpha: 0, duration: 0.04 }, 0)
+        .to("[data-hero-lockup]", { yPercent: -18, scale: 0.86, autoAlpha: 0, filter: "blur(6px)", duration: 0.22, ease: "power2.in" }, 0)
+        .to("[data-hero-topo]", { scale: 1.15, duration: 0.75 }, 0)
+        .to(arch, { t: narrow ? 22 : 16, x: narrow ? 10 : 30, b: narrow ? 14 : 12, duration: 0.3, ease: "power2.out", onUpdate: paintArch }, 0.16)
+        .to(arch, { t: 0, x: 0, b: 0, r: 0, duration: 0.32, ease: "power2.inOut", onUpdate: paintArch }, 0.48)
+        .to("[data-hero-video]", { scale: 1, duration: 0.74, ease: "power1.out" }, 0.16)
+        .to("[data-hero-topo]", { autoAlpha: 0, duration: 0.2 }, 0.55)
+        .to("[data-hero-shade]", { autoAlpha: 1, duration: 0.18 }, 0.7)
+        .fromTo("[data-hero-copy]", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.16, ease: "power2.out" }, 0.8)
+        .to({}, { duration: 0.14 })
 
       /* ------------------------------------------------------------------ */
       /* 2. Word-by-word statement reveal                                    */
@@ -98,7 +101,7 @@ export function HomeMotion() {
         gsap.fromTo(
           el,
           { yPercent: -amount / 2 },
-          { yPercent: amount / 2, ease: "none", scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: true } },
+          { yPercent: amount / 2, ease: "none", scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: 0.8 } },
         )
       })
 
@@ -119,37 +122,54 @@ export function HomeMotion() {
       /* ------------------------------------------------------------------ */
       /* 5. Depth gallery: layers at different speeds + sliding outline type */
       /* ------------------------------------------------------------------ */
+      // The stage is sticky for the section's extra height. Frames start below their resting
+      // place (faster layers start lower) and rise past each other in separate columns.
       const depth = document.querySelector("[data-depth]")
       if (depth) {
-        const st = { trigger: depth, start: "top top", end: "bottom bottom", scrub: true }
-        gsap.fromTo("[data-depth-bg]", { scale: 1.15 }, { scale: 1, ease: "none", scrollTrigger: st })
-        gsap.fromTo("[data-depth-type]", { xPercent: 0 }, { xPercent: -45, ease: "none", scrollTrigger: { ...st, start: "top bottom" } })
+        const held = { trigger: depth, start: "top top", end: "bottom bottom", scrub: 1 }
+        const through = { trigger: depth, start: "top bottom", end: "bottom top", scrub: 1 }
+        gsap.fromTo("[data-depth-bg]", { scale: 1.14, yPercent: 0 }, { scale: 1, yPercent: -4, ease: "none", scrollTrigger: held })
+        gsap.fromTo("[data-depth-type]", { xPercent: 0 }, { xPercent: -32, ease: "none", scrollTrigger: through })
         q("[data-depth-layer]").forEach(layer => {
           const speed = parseFloat(layer.dataset.depthLayer || "1")
-          gsap.fromTo(layer, { y: 220 * speed }, { y: -260 * speed, ease: "none", scrollTrigger: { ...st, start: "top bottom" } })
+          gsap.fromTo(
+            layer,
+            { y: () => window.innerHeight * 0.6 * speed },
+            { y: () => -window.innerHeight * 0.6 * speed, ease: "none", scrollTrigger: { ...held, invalidateOnRefresh: true } },
+          )
         })
+        gsap.fromTo(
+          "[data-depth-caption]",
+          { autoAlpha: 0, y: 30 },
+          { autoAlpha: 1, y: 0, ease: "power2.out", scrollTrigger: { trigger: depth, start: "top -60%", end: "top -95%", scrub: 1 } },
+        )
       }
 
       /* ------------------------------------------------------------------ */
       /* 6. Horizontal portfolio track (desktop only)                        */
       /* ------------------------------------------------------------------ */
+      // Scroll distance is 1.35x the travel so the work glides rather than races, the photos
+      // drift inside their frames, and the last project holds for a beat before release.
       mm.add("(min-width: 1024px)", () => {
         const track = document.querySelector<HTMLElement>("[data-hscroll-track]")
         if (!track) return
         const distance = () => track.scrollWidth - window.innerWidth
-        gsap.to(track, {
-          x: () => -distance(),
-          ease: "none",
+        const tl = gsap.timeline({
+          defaults: { ease: "none" },
           scrollTrigger: {
             trigger: "[data-hscroll]",
             start: "top top",
-            end: () => "+=" + distance(),
+            end: () => "+=" + distance() * 1.35,
             pin: "[data-hscroll-pin]",
-            scrub: 1,
+            scrub: 1.2,
             invalidateOnRefresh: true,
             anticipatePin: 1,
           },
         })
+        tl.to(track, { x: () => -distance(), duration: 1 }, 0)
+          .fromTo("[data-hs-img]", { xPercent: 5 }, { xPercent: -5, duration: 1 }, 0)
+          .fromTo("[data-hscroll-progress]", { scaleX: 0 }, { scaleX: 1, duration: 1 }, 0)
+          .to({}, { duration: 0.1 })
       })
 
       /* ------------------------------------------------------------------ */
@@ -157,8 +177,13 @@ export function HomeMotion() {
       /* ------------------------------------------------------------------ */
       gsap.fromTo(
         "[data-video-frame]",
-        { width: "86%", borderRadius: "2rem" },
-        { width: "100%", borderRadius: "0rem", ease: "none", scrollTrigger: { trigger: "[data-video-band]", start: "top 85%", end: "top 10%", scrub: true } },
+        { width: "86%", borderRadius: "6px" },
+        { width: "100%", borderRadius: "0px", ease: "none", scrollTrigger: { trigger: "[data-video-band]", start: "top 90%", end: "top 15%", scrub: 1 } },
+      )
+      gsap.fromTo(
+        "[data-video-copy]",
+        { autoAlpha: 0, y: 40 },
+        { autoAlpha: 1, y: 0, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: "[data-video-band]", start: "top 35%", toggleActions: "play none none reverse" } },
       )
 
       /* ------------------------------------------------------------------ */
@@ -174,8 +199,8 @@ export function HomeMotion() {
       /* ------------------------------------------------------------------ */
       gsap.fromTo(
         "[data-card-flip]",
-        { rotateY: -18, rotateX: 8 },
-        { rotateY: 180, rotateX: 0, ease: "none", scrollTrigger: { trigger: "[data-card-flip]", start: "top 85%", end: "center 40%", scrub: 1 } },
+        { rotateY: -14, rotateX: 6 },
+        { rotateY: 180, rotateX: 0, ease: "power2.inOut", scrollTrigger: { trigger: "[data-card-flip]", start: "top 75%", end: "center 55%", scrub: 1 } },
       )
 
       /* ------------------------------------------------------------------ */

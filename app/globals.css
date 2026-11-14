@@ -60,6 +60,13 @@
 
 * { border-color: var(--border); }
 html { scroll-behavior: smooth; }
+html.lenis-on { scroll-behavior: auto; }
+html.lenis-on, html.lenis-on body { height: auto; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* Photos ease in as they load (see smooth-scroll.tsx) */
+img[data-fade] { transition: opacity 1.1s cubic-bezier(.22,.7,.2,1), filter 1.1s cubic-bezier(.22,.7,.2,1), transform 1.25s var(--ease-out-expo); }
+img.mh-img-pending { opacity: 0 !important; filter: blur(14px); }
 body {
   background: var(--background);
   color: var(--foreground);
@@ -112,8 +119,8 @@ h1, h2, h3 { text-wrap: balance; }
   50% { box-shadow: 0 0 0 10px rgb(211 191 153 / 0); }
 }
 @keyframes mh-scroll-cue {
-  0%, 100% { transform: translate(-50%, 0); opacity: .55; }
-  50% { transform: translate(-50%, 6px); opacity: 1; }
+  0%, 100% { transform: translateY(0); opacity: .55; }
+  50% { transform: translateY(6px); opacity: 1; }
 }
 
 .mh-btn {
@@ -186,6 +193,30 @@ h1, h2, h3 { text-wrap: balance; }
 .mh-stagger > *:nth-child(2) { animation-delay: .14s; }
 .mh-stagger > *:nth-child(3) { animation-delay: .23s; }
 .mh-stagger > *:nth-child(4) { animation-delay: .32s; }
+
+/* Concept-render treatment for before/after placeholders (no real "before" photo yet) */
+.mh-concept img { filter: grayscale(1) sepia(.18) contrast(1.18) brightness(1.08); }
+.mh-concept::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgb(110 90 68 / .16) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgb(110 90 68 / .16) 0 1px, transparent 1px 48px),
+    rgb(234 226 213 / .38);
+  mix-blend-mode: multiply;
+}
+
+/* Drafting-grid overlay for the architectural design stage */
+.mh-blueprint {
+  background:
+    repeating-linear-gradient(0deg, rgb(211 191 153 / .22) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, rgb(211 191 153 / .22) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(0deg, rgb(211 191 153 / .08) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(90deg, rgb(211 191 153 / .08) 0 1px, transparent 1px 16px);
+  mix-blend-mode: screen;
+}
 
 /* Ambient contour overlay (components/moodhaus/topo-drift.tsx) */
 .mh-drift {

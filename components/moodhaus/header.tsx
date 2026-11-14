@@ -8,7 +8,8 @@ import { Wordmark } from "./logo"
 
 const links = [
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/#capabilities" },
+  { label: "Before & after", href: "/before-after" },
   { label: "The studio", href: "/studio" },
   { label: "Process", href: "/#process" },
 ]

@@ -27,7 +27,7 @@ export function Services() {
             <article
               key={service.title}
               data-stack-card
-              className="sticky mb-10 overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground mh-shadow-lg"
+              className="sticky mb-10 overflow-hidden rounded-[6px] bg-primary text-primary-foreground mh-shadow-lg"
               style={{ top: `calc(6.5rem + ${i * 1.75}rem)` }}
             >
               <div className="grid min-h-[520px] lg:grid-cols-[.9fr_1.1fr]">

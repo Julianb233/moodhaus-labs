@@ -23,7 +23,7 @@ export default function StudioPage() {
 
       <section className="bg-background py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-t-full">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[6px]">
             <Image src={media.stoneSteps} alt="Curved stone steps leading into a garden" fill sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover" />
           </div>
           <div>
@@ -38,7 +38,7 @@ export default function StudioPage() {
             </p>
             <div className="mt-12 grid gap-5 sm:grid-cols-3">
               {values.map(v => (
-                <article key={v.title} className="mh-card rounded-[1.25rem] border border-primary/10 bg-paper p-6">
+                <article key={v.title} className="mh-card rounded-[6px] border border-primary/10 bg-paper p-6">
                   <v.icon className="mb-8 h-6 w-6 text-walnut" strokeWidth={1.25} />
                   <h3 className="font-serif text-2xl text-primary">{v.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.text}</p>

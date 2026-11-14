@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Compass, Layers, Sparkles, Trees } from "lucide-react"
 
 const badges = [
@@ -15,10 +16,10 @@ export function TrustBadges() {
     <section className="border-b border-primary/10 bg-background">
       <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-primary/10 sm:grid-cols-4 sm:divide-y-0">
         {badges.map(badge => (
-          <div key={badge.label} className="flex items-center justify-center gap-3 px-4 py-8 text-center sm:flex-col sm:gap-3">
-            <badge.icon className="h-5 w-5 shrink-0 text-walnut" strokeWidth={1.25} />
-            <span className="mh-eyebrow text-[10px] text-foreground/70">{badge.label}</span>
-          </div>
+          <Link key={badge.label} href="#capabilities" className="group flex items-center justify-center gap-3 px-4 py-8 text-center mh-transition hover:bg-card sm:flex-col sm:gap-3">
+            <badge.icon className="h-5 w-5 shrink-0 text-walnut mh-transition group-hover:-translate-y-0.5" strokeWidth={1.25} />
+            <span className="mh-eyebrow text-[10px] text-foreground/70 group-hover:text-primary">{badge.label}</span>
+          </Link>
         ))}
       </div>
       <div className="overflow-hidden border-t border-primary/10 bg-primary py-4 text-accent">

@@ -7,6 +7,7 @@ import { useParams } from "next/navigation"
 import { ArrowUpRight, ChevronLeft } from "lucide-react"
 import { Header } from "@/components/moodhaus/header"
 import { Footer } from "@/components/moodhaus/footer"
+import { BeforeAfter } from "@/components/moodhaus/before-after"
 import { projects } from "@/lib/moodhaus-content"
 
 export default function ProjectPage() {
@@ -60,11 +61,22 @@ export default function ProjectPage() {
       </section>
 
       <section className="bg-paper pb-24 sm:pb-32">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 pt-24 md:grid-cols-[1.2fr_.8fr] lg:px-8">
-          {project.gallery.slice(1).map((src, i) => (
-            <div key={src} className={"mh-image-frame relative overflow-hidden " + (i === 0 ? "aspect-[4/3] rounded-[1.5rem]" : "aspect-[3/4] rounded-t-full")}>
-              <Image src={src} alt={project.name + " detail " + (i + 1)} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover mh-image-zoom" />
-            </div>
+        <div className="mx-auto max-w-7xl px-6 pt-24 lg:px-8">
+          <p className="mh-eyebrow text-walnut">Before &amp; after</p>
+          <p className="mt-3 font-serif text-3xl font-light text-primary sm:text-4xl">Drag across each image to compare.</p>
+        </div>
+        <div className="mx-auto mt-10 grid max-w-7xl gap-6 px-6 md:grid-cols-2 lg:px-8">
+          {project.gallery.map((src, i) => (
+            <figure key={src} className={i === 0 ? "md:col-span-2" : ""}>
+              <BeforeAfter
+                after={src}
+                before={project.befores?.[i]}
+                alt={project.name + (i === 0 ? "" : " detail " + i)}
+                className="rounded-[6px]"
+                aspect={i === 0 ? "aspect-[4/3] md:aspect-[16/9]" : "aspect-[4/3]"}
+                sizes={i === 0 ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
+              />
+            </figure>
           ))}
         </div>
       </section>

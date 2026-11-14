@@ -7,7 +7,7 @@ import { projects } from "@/lib/moodhaus-content"
 export function PortfolioGrid() {
   return (
     <section id="portfolio" data-hscroll className="relative overflow-hidden bg-background py-24 lg:py-0">
-      <div data-hscroll-pin className="lg:flex lg:h-[100svh] lg:items-center">
+      <div data-hscroll-pin className="lg:relative lg:flex lg:h-[100svh] lg:items-center">
         <div data-hscroll-track className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 lg:snap-none lg:gap-10 lg:overflow-visible lg:px-[6vw] lg:pb-0">
           <div className="flex w-[78vw] shrink-0 snap-start flex-col justify-center sm:w-[46vw] lg:w-[30vw]">
             <p className="mh-eyebrow mb-5 text-walnut">Selected work</p>
@@ -24,10 +24,12 @@ export function PortfolioGrid() {
             </Link>
           </div>
           {projects.map((project, i) => (
-            <article key={project.id} className="group w-[78vw] shrink-0 snap-start sm:w-[46vw] lg:w-[34vw]">
+            <article key={project.id} className="group w-[78vw] shrink-0 snap-start sm:w-[46vw] lg:w-[36vw]">
               <Link href={"/project/" + project.id} className="block">
-                <div className={"mh-image-frame relative overflow-hidden bg-card " + (i % 2 === 0 ? "aspect-[4/5] rounded-t-full" : "aspect-[4/5] rounded-[1.5rem] lg:mt-24")}>
-                  <Image src={project.image} alt={project.name} fill sizes="(min-width: 1024px) 34vw, 80vw" className="object-cover mh-image-zoom" />
+                <div className={"mh-image-frame relative aspect-[4/5] overflow-hidden bg-card rounded-[6px]"}>
+                  <div data-hs-img className="absolute inset-y-0 -left-[7%] -right-[7%]">
+                    <Image src={project.image} alt={project.name} fill sizes="(min-width: 1024px) 40vw, 80vw" className="object-cover mh-image-zoom" />
+                  </div>
                   {project.badge && <span className="absolute left-5 top-5 rounded-full bg-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">{project.badge}</span>}
                 </div>
                 <div className="flex items-start justify-between gap-4 pt-5">
@@ -43,6 +45,14 @@ export function PortfolioGrid() {
               </Link>
             </article>
           ))}
+        </div>
+        {/* Scroll progress through the selected work (desktop) */}
+        <div className="pointer-events-none absolute inset-x-[6vw] bottom-10 hidden items-center gap-5 lg:flex" aria-hidden="true">
+          <span className="mh-eyebrow text-[10px] text-walnut">Selected work</span>
+          <span className="relative h-px flex-1 bg-primary/15">
+            <span data-hscroll-progress className="absolute inset-0 origin-left scale-x-0 bg-bronze" />
+          </span>
+          <span className="mh-eyebrow text-[10px] text-walnut">{String(projects.length).padStart(2, "0")} projects</span>
         </div>
       </div>
     </section>

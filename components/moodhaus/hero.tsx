@@ -7,7 +7,7 @@ import { TopoLines } from "./topo-lines"
 /**
  * Scroll-driven hero. The stage pins for ~2 screens while:
  *  1. gold contour lines draw themselves across the forest-green field,
- *  2. an arched "window" of coastal drone footage opens to full bleed,
+ *  2. a framed "window" of coastal drone footage opens to full bleed,
  *  3. the MOODHAUS lockup lifts away and the headline settles in.
  * The choreography lives in home-motion.tsx (GSAP ScrollTrigger, scrubbed).
  */
@@ -22,11 +22,11 @@ export function Hero() {
           <TopoLines className="h-full w-full" />
         </div>
 
-        {/* Arched window into the coast */}
+        {/* Framed window into the coast */}
         <div
           data-hero-window
           className="absolute inset-0 z-[2] overflow-hidden bg-deep-green will-change-[clip-path]"
-          style={{ clipPath: "inset(100% 36% 0% 36% round 999px 999px 0px 0px)" }}
+          style={{ clipPath: "inset(100% 36% 0% 36% round 6px)" }}
         >
           <video
             data-hero-video
@@ -66,9 +66,11 @@ export function Hero() {
           </div>
         </div>
 
-        <a href="#intro" data-hero-cue className="mh-scroll-cue absolute bottom-7 left-1/2 z-[4] flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-primary-foreground/70">
-          Scroll to enter <ArrowDown className="h-3.5 w-3.5" />
-        </a>
+        <div data-hero-cue className="absolute bottom-7 left-1/2 z-[4] -translate-x-1/2">
+          <a href="#intro" data-hero-cue-inner className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-primary-foreground/70">
+            Scroll to enter <ArrowDown className="mh-scroll-cue h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
     </section>
   )

@@ -26,7 +26,7 @@ export function IntroStatement() {
           </div>
         </div>
         <div className="relative">
-          <div className="mh-image-frame relative aspect-[3/4] overflow-hidden rounded-t-full">
+          <div className="mh-image-frame relative aspect-[4/5] overflow-hidden rounded-[6px]">
             <div data-parallax="-12" className="absolute inset-[-12%_0]">
               <Image src={media.gravelGarden} alt="Curved timber facade above a raked gravel garden" fill sizes="(min-width: 1024px) 30vw, 90vw" className="object-cover" />
             </div>

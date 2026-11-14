@@ -50,7 +50,7 @@ export default function PortfolioPage() {
             {filtered.map((project, i) => (
               <article key={project.id} className={"mh-fade-up group " + (i % 2 === 1 ? "md:mt-24" : "")}>
                 <Link href={"/project/" + project.id} className="block">
-                  <div className={"mh-image-frame relative aspect-[4/5] overflow-hidden bg-card " + (i % 3 === 0 ? "rounded-t-full" : "rounded-[1.5rem]")}>
+                  <div className={"mh-image-frame relative aspect-[4/5] overflow-hidden bg-card  rounded-[6px]"}>
                     <Image src={project.image} alt={project.name} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover mh-image-zoom" />
                     {project.badge && <span className="absolute left-5 top-5 rounded-full bg-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">{project.badge}</span>}
                   </div>

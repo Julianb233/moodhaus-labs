@@ -49,6 +49,14 @@ export const media = {
   marbleFireplace: unsplash("1598928506311-c55ded91a20c", 1600),
   indoorPool: unsplash("1776763019060-fa0663574ae6", 1600),
   openPlan: unsplash("1778731660315-698ade8a0bd0", 1600),
+  // Tropical / La Jolla mood (Unsplash, free licence)
+  archModel: unsplash("1789985209005-229117b86ab9", 2200),
+  palmGarden: unsplash("1766603636517-ac8e3c9faa44", 2200),
+  villaTwilight: unsplash("1759372945658-1e9f56e751bd", 2200),
+  infinityPalms: unsplash("1777919541982-dcb34c146a2d", 2400),
+  sunsetPalmsPool: unsplash("1758192838598-a1de4da5dcaf", 2200),
+  oceanDoorway: unsplash("1793891546320-b031d3d7a040", 1800),
+  palmLawnHouse: unsplash("1766603636671-484c4911a84b", 2000),
 }
 
 export type ProjectCategory = "residences" | "landscape" | "interiors" | "visualization"
@@ -69,6 +77,12 @@ export interface Project {
   brief: string
   approach: string
   outcome: string
+  /**
+   * Real "before" photos for the gallery, in the same order as `gallery` (shot from the same
+   * spot). Leave a slot undefined and the slider shows a concept-render treatment of the
+   * finished photo instead.
+   */
+  befores?: (string | undefined)[]
 }
 
 export const projectCategories: { value: ProjectCategory | "all"; label: string }[] = [
@@ -244,9 +258,137 @@ export const testimonials = [
   },
 ]
 
+/* -------------------------------------------------------------------------- */
+/* Before & after                                                             */
+/* -------------------------------------------------------------------------- */
+
+export interface Transformation {
+  id: string
+  title: string
+  location: string
+  scope: string
+  summary: string
+  /** Finished photo. */
+  after: string
+  /**
+   * Photo of the site before the work, taken from the same spot as `after`.
+   * PLACEHOLDER: until the studio's own photos are added, leave this out and the slider
+   * shows a concept-render treatment of the finished photo, labelled "Concept".
+   */
+  before?: string
+  projectId?: string
+}
+
+export const transformations: Transformation[] = [
+  {
+    id: "la-jolla-pool-terrace",
+    title: "Pool terrace",
+    location: "La Jolla",
+    scope: "Landscape architecture · Pool · Lighting",
+    summary: "A sloping lawn regraded into a limestone terrace, infinity-edge pool, and low garden walls lit for evenings outside.",
+    after: media.duskPools,
+    projectId: "bird-rock-residence",
+  },
+  {
+    id: "rancho-santa-fe-courtyard",
+    title: "Entry courtyard",
+    location: "Rancho Santa Fe",
+    scope: "Architecture · Hardscape · Planting",
+    summary: "A gravel drive turned into a walled arrival court with a reflecting pool, olive trees, and a new limewashed façade.",
+    after: media.courtyardPool,
+    projectId: "rancho-santa-fe-estate",
+  },
+  {
+    id: "del-mar-garden",
+    title: "Coastal garden",
+    location: "Del Mar",
+    scope: "Planting design · Paths · Water",
+    summary: "Thirsty turf replaced with drought-tolerant native planting, a crushed-stone path, and a quiet water feature.",
+    after: media.greenPath,
+    projectId: "del-mar-garden-house",
+  },
+  {
+    id: "point-loma-living",
+    title: "Living room",
+    location: "Point Loma",
+    scope: "Interiors · Millwork · Lighting",
+    summary: "A dark, divided ground floor opened into one long room of oak, plaster, and harbor light.",
+    after: media.livingRoom,
+    projectId: "point-loma-interiors",
+  },
+  {
+    id: "fairbanks-front-walk",
+    title: "Front walk",
+    location: "Fairbanks Ranch",
+    scope: "Hardscape · Lighting · Planting",
+    summary: "A plain concrete approach rebuilt as a stepped stone walk with layered planting and low path lights.",
+    after: media.frontWalk,
+    projectId: "fairbanks-ranch-twilight",
+  },
+  {
+    id: "coronado-stone-terrace",
+    title: "Sunset terrace",
+    location: "Coronado",
+    scope: "Architecture · Outdoor living",
+    summary: "A tired deck replaced with a stone-clad terrace and fire lounge oriented to the evening light.",
+    after: media.stoneSunset,
+    projectId: "coronado-courtyard",
+  },
+]
+
+/* -------------------------------------------------------------------------- */
+/* Capabilities, shown as one (illustrative) La Jolla home taken through all four */
+/* -------------------------------------------------------------------------- */
+
+export const capabilityDemo = {
+  name: "Casa Paloma",
+  place: "La Jolla Farms",
+  note: "Illustrative demo project",
+}
+
+export const capabilities = [
+  {
+    key: "design",
+    label: "Architectural design",
+    title: "A plan drawn from the bluff",
+    text: "We start on the land: the ocean bearing, the evening wind, the line of the cliff. The house becomes three low pavilions under one roof plane, every room turned toward the Pacific or the garden.",
+    facts: ["0.9-acre ocean bluff lot", "Three pavilions, one roof plane", "Every room faces water or garden"],
+    image: media.archModel,
+    alt: "White architectural study model in tall grass at golden hour",
+  },
+  {
+    key: "landscape",
+    label: "Landscape architecture",
+    title: "A garden that feels like the tropics",
+    text: "King and kentia palms, bird of paradise, and silver coastal agave, layered so the garden reads lush all year on a fraction of the water. Garden rooms step down toward the pool and the view.",
+    facts: ["Palms, bird of paradise, agave", "Drip irrigation and rain capture", "Garden rooms stepping to the pool"],
+    image: media.palmGarden,
+    alt: "Tall palm trees above a modern backyard garden",
+  },
+  {
+    key: "visualize",
+    label: "Photoreal 3D visualization",
+    title: "Stand on the terrace before it exists",
+    text: "Every surface, fixture, and plant is modelled, so you can see the pool at 7:40 on a June evening and walk the house room by room. Decisions are made with confidence, long before ground is broken.",
+    facts: ["Golden hour, dusk, and night studies", "Room-by-room walkthrough films", "Materials chosen in the render"],
+    image: media.villaTwilight,
+    alt: "Tropical villa with a lit pool at twilight",
+  },
+  {
+    key: "complete",
+    label: "Concept to completion",
+    title: "Handed over with the lights on",
+    text: "One team from permits to the final stone. We coordinate the builder and craftspeople, visit the site every week, and hand over a finished home with the garden planted and the lighting set.",
+    facts: ["One team, permit to final stone", "Weekly site visits", "Garden, lighting, and art in place"],
+    image: media.infinityPalms,
+    alt: "Infinity pool among palm trees overlooking white modern houses",
+  },
+]
+
 export const footerLinks = [
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Before & after", href: "/before-after" },
   { label: "The studio", href: "/studio" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/#capabilities" },
   { label: "Book a consultation", href: "/consultation" },
 ]
