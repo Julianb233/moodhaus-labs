@@ -93,7 +93,10 @@ export default function Home() {
             <div className="lg:col-span-5">
               <div data-img-reveal className="aa-frame relative aspect-[4/5] bg-primary text-accent mh-shadow-lg lg:sticky lg:top-28">
                 {person.portrait ? (
-                  <img src={person.portrait} alt={`Portrait of ${person.name}`} className="absolute inset-0 h-full w-full object-cover" />
+                  <>
+                    <img src={person.portrait} alt={`Portrait of ${person.name} above the Mediterranean coast`} className="absolute inset-0 h-full w-full object-cover" />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
+                  </>
                 ) : (
                   <>
                     <TopoDrift opacity={0.22} />
@@ -105,7 +108,7 @@ export default function Home() {
                   </>
                 )}
                 <p className="mh-eyebrow absolute inset-x-0 bottom-0 px-6 pb-5 text-center text-[9px] text-primary-foreground/70">
-                  {person.studio} · San Diego
+                  Founder · Principal Designer
                 </p>
               </div>
             </div>

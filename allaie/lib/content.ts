@@ -23,8 +23,8 @@ export const person = {
   email: "moodhauslabs@outlook.com",
   /** TODO(real): add her Instagram / LinkedIn / Pinterest URLs; empty ones are hidden. */
   socials: [] as { label: string; href: string }[],
-  /** TODO(real): drop a portrait at /public/allaie-portrait.jpg and set this to "/allaie-portrait.jpg". */
-  portrait: null as string | null,
+  /** Portrait in the story section (supplied by the owner, Nov 2026). Swap for a studio portrait when one exists. */
+  portrait: "/allaie-portrait.jpg" as string | null,
 }
 
 export const philosophy = {
