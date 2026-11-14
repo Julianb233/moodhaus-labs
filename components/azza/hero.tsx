@@ -1,0 +1,14 @@
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
+
+export function Hero() {
+  return <section className="relative overflow-hidden bg-primary text-primary-foreground"><div className="azza-grain" aria-hidden="true" />
+    <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block azza-parallax" style={{ opacity: 0.16 }}><Image src="/images/azza/photos/hero-bg.webp" alt="Fresh glazed cinnamon rolls in an open bakery box" fill priority className="object-cover azza-image-zoom" /></div>
+    <div className="relative z-10 mx-auto grid min-h-[720px] max-w-7xl items-end gap-10 px-6 pb-14 pt-36 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:px-8 lg:pb-20">
+      <div className="max-w-2xl"><p className="azza-fade-up mb-5 text-sm uppercase tracking-[0.3em] text-accent">Homemade desserts for sweeter days</p><h1 className="azza-fade-up font-serif text-6xl leading-[.92] tracking-tight [animation-delay:120ms] sm:text-8xl lg:text-[8.5rem]">Good things<br /><em className="font-serif font-normal text-accent">are baked</em><br />with love.</h1><p className="azza-fade-up mt-8 max-w-lg text-lg leading-relaxed text-primary-foreground/75 [animation-delay:240ms]">A little corner of the internet for warm cookies, Sunday loaves, and the kind of treats that turn an ordinary day into a memory.</p><div className="azza-fade-up mt-9 flex flex-wrap items-center gap-4 [animation-delay:360ms]"><Link href="/shop" className="azza-btn azza-pulse-soft inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-bold text-primary hover:bg-accent/90">Shop the bake <ArrowUpRight className="h-4 w-4" /></Link><Link href="#story" className="azza-btn inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-3.5 text-sm text-primary-foreground hover:bg-primary-foreground/10">Meet the baker</Link></div></div>
+      <div className="azza-float relative mx-auto w-full max-w-[540px] rotate-2"><div className="azza-image-frame overflow-hidden rounded-[2rem] border-[10px] border-background/90 bg-background shadow-2xl"><div className="relative aspect-square"><Image src="/images/azza/photos/hero-feature.webp" alt="Open box of glazed cinnamon rolls on parchment" fill priority className="object-cover" /></div></div><div className="absolute -bottom-5 -left-5 rounded-2xl bg-accent px-5 py-4 text-primary shadow-xl"><p className="font-serif text-xl">Baked today</p><p className="text-xs uppercase tracking-[0.2em]">shared with love</p></div></div>
+    </div>
+    <a href="#collection" className="azza-scroll-cue absolute bottom-6 left-1/2 hidden items-center gap-2 text-xs uppercase tracking-[0.2em] text-primary-foreground/60 lg:flex">Scroll for something sweet <ArrowDown className="h-4 w-4" /></a>
+  </section>
+}

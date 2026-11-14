@@ -1,0 +1,5 @@
+import { Clock3, Heart, MapPin, Wheat } from "lucide-react"
+
+const badges = [{ icon: Heart, label: "Baked with love" }, { icon: Wheat, label: "Small-batch recipes" }, { icon: Clock3, label: "Freshly made" }, { icon: MapPin, label: "Made for the neighborhood" }]
+
+export function TrustBadges() { return <section className="border-y border-primary/10 bg-background"><div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-primary/10 sm:grid-cols-4 sm:divide-y-0">{badges.map(badge => <div key={badge.label} className="flex items-center justify-center gap-3 px-4 py-7 text-center sm:flex-col sm:gap-2"><badge.icon className="h-5 w-5 shrink-0 text-terracotta" /><span className="text-xs uppercase tracking-[0.12em] text-foreground/70">{badge.label}</span></div>)}</div><div className="overflow-hidden border-t border-primary/10 py-3 text-xs uppercase tracking-[0.25em] text-primary/60"><div className="azza-marquee flex w-max gap-12"><span>Fresh from the oven · Made for sharing · See you at the market · </span><span aria-hidden="true">Fresh from the oven · Made for sharing · See you at the market · </span></div></div></section> }
