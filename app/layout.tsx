@@ -1,63 +1,59 @@
 import type { Metadata, Viewport } from "next"
-import { DM_Sans, Playfair_Display } from "next/font/google"
-import { CartDrawer } from "@/components/azza/cart-drawer"
-import { CartProvider } from "@/components/azza/cart-context"
+import { Cormorant_Garamond, Montserrat } from "next/font/google"
+import { SmoothScroll } from "@/components/moodhaus/smooth-scroll"
 import "./globals.css"
 
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" })
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" })
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-sans" })
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+})
 
-const siteUrl = "https://azzaapron.vercel.app"
-const title = "Azza’s Apron — Homemade Desserts for Sweeter Days"
-const description = "Small-batch desserts, nostalgic recipes, and good things baked with love by Azza’s Apron."
+const siteUrl = "https://moodhauslabs.com"
+const title = "Moodhaus Labs — Architecture & Landscape Design, San Diego"
+const description =
+  "Moodhaus Labs designs exceptional homes and landscapes across coastal San Diego. Design, visualize, and transform with founder and principal designer Allaie Aisha."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: title, template: "%s · Azza’s Apron" },
+  title: { default: title, template: "%s · Moodhaus Labs" },
   description,
-  keywords: ["Azza’s Apron", "homemade desserts", "small-batch bakery", "cookies", "cakes", "dessert gifts"],
-  applicationName: "Azza’s Apron",
-  authors: [{ name: "Azza’s Apron" }],
-  creator: "Azza’s Apron",
-  icons: {
-    icon: [{ url: "/images/azza/brand/favicon.png", type: "image/png" }],
-    apple: [{ url: "/images/azza/brand/favicon.png" }],
-  },
+  keywords: [
+    "Moodhaus Labs",
+    "San Diego architect",
+    "luxury landscape design San Diego",
+    "La Jolla architect",
+    "Rancho Santa Fe landscape architect",
+    "Del Mar home design",
+    "3D architectural visualization",
+  ],
+  applicationName: "Moodhaus Labs",
+  authors: [{ name: "Moodhaus Labs" }],
+  creator: "Moodhaus Labs",
+  icons: { icon: [{ url: "/brand/favicon.svg", type: "image/svg+xml" }] },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Azza’s Apron",
+    siteName: "Moodhaus Labs",
     title,
     description,
-    images: [
-      {
-        url: "/images/azza/brand/og-share.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Azza’s Apron — good things are baked with love",
-      },
-    ],
+    images: [{ url: "/brand/og-share.png", width: 1200, height: 630, alt: "Moodhaus Labs — Design | Visualize | Transform" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-    images: ["/images/azza/brand/og-share.jpg"],
-  },
+  twitter: { card: "summary_large_image", title, description, images: ["/brand/og-share.png"] },
   alternates: { canonical: siteUrl },
 }
 
-export const viewport: Viewport = { themeColor: "#234B3A", colorScheme: "light" }
+export const viewport: Viewport = { themeColor: "#202D23", colorScheme: "light" }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${playfair.variable}`}>
-        <CartProvider>
-          {children}
-          <CartDrawer />
-        </CartProvider>
+      <body className={`${montserrat.variable} ${cormorant.variable}`}>
+        <SmoothScroll />
+        {children}
       </body>
     </html>
   )
