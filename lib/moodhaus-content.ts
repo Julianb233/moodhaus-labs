@@ -12,7 +12,7 @@ export const studio = {
   phone: "(619) 673-2161",
   phoneHref: "tel:+16196732161",
   email: "moodhauslabs@outlook.com",
-  location: "San Diego, CA",
+  location: "San Diego County, CA",
   website: "MoodHauslabs.com",
 }
 
