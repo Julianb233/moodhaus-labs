@@ -1,0 +1,302 @@
+@import "tailwindcss";
+
+:root {
+  /* Moodhaus Labs brand tokens (sampled from the business cards) */
+  --background: #eae2d5;          /* Linen cream */
+  --foreground: #1d2519;          /* Ink green */
+  --card: #e2d9ca;                /* Linen, one step deeper */
+  --card-foreground: #1d2519;
+  --popover: #f3eee6;             /* Paper */
+  --popover-foreground: #1d2519;
+  --primary: #202d23;             /* Forest green */
+  --primary-foreground: #eae2d5;
+  --secondary: #dcd4c7;           /* Stone */
+  --secondary-foreground: #202d23;
+  --muted: #e5ddd0;
+  --muted-foreground: #5f5a4e;
+  --accent: #d3bf99;              /* Champagne gold */
+  --accent-foreground: #202d23;
+  --destructive: #9a5b3f;
+  --border: #cfc3b0;
+  --input: #cfc3b0;
+  --ring: #9a8268;
+  --bronze: #9a8268;              /* Bronze rule (lines, dividers only) */
+  --walnut: #6e5a44;              /* Bronze for text on light grounds (AA) */
+  --deep-green: #161f18;          /* Night green */
+  --paper: #f3eee6;
+  --radius: .25rem;
+  --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+  --ease-out-soft: cubic-bezier(.22, 1, .36, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-bronze: var(--bronze);
+  --color-walnut: var(--walnut);
+  --color-paper: var(--paper);
+  --color-deep-green: var(--deep-green);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+html.lenis-on { scroll-behavior: auto; }
+html.lenis-on, html.lenis-on body { height: auto; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* Photos ease in as they load (see smooth-scroll.tsx) */
+img[data-fade] { transition: opacity 1.1s cubic-bezier(.22,.7,.2,1), filter 1.1s cubic-bezier(.22,.7,.2,1), transform 1.25s var(--ease-out-expo); }
+img.mh-img-pending { opacity: 0 !important; filter: blur(14px); }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: var(--deep-green); }
+.font-serif { font-family: var(--font-serif), Georgia, serif; }
+.font-display { font-family: var(--font-sans), sans-serif; }
+
+/* Brand type: wide-tracked geometric caps (Montserrat) */
+.mh-wordmark { font-family: var(--font-sans), sans-serif; letter-spacing: .32em; margin-right: -.32em; }
+.mh-eyebrow { font-family: var(--font-sans), sans-serif; font-size: .72rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; }
+h1, h2, h3 { text-wrap: balance; }
+
+.mh-transition {
+  transition:
+    color .25s var(--ease-out-soft),
+    background-color .25s var(--ease-out-soft),
+    border-color .25s var(--ease-out-soft),
+    opacity .25s var(--ease-out-soft),
+    transform .35s var(--ease-out-expo),
+    box-shadow .35s var(--ease-out-soft);
+}
+
+.mh-shadow { box-shadow: 0 18px 45px -28px rgb(22 31 24 / .45); }
+.mh-shadow-lg { box-shadow: 0 28px 70px -36px rgb(22 31 24 / .5); }
+
+.mh-fade-up { animation: mh-fade-up .95s var(--ease-out-expo) both; }
+.mh-float { animation: mh-float 7.5s ease-in-out infinite; }
+.mh-marquee { animation: mh-marquee 32s linear infinite; }
+.mh-pulse-soft { animation: mh-pulse-soft 2.8s ease-in-out infinite; }
+.mh-scroll-cue { animation: mh-scroll-cue 2.2s var(--ease-out-soft) infinite; }
+
+@keyframes mh-fade-up {
+  from { opacity: 0; transform: translateY(28px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes mh-float {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-12px) rotate(1.2deg); }
+}
+@keyframes mh-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes mh-pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(211 191 153 / .35); }
+  50% { box-shadow: 0 0 0 10px rgb(211 191 153 / 0); }
+}
+@keyframes mh-scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: .55; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+.mh-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s var(--ease-out-expo), background-color .25s ease, box-shadow .35s ease;
+}
+.mh-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgb(255 255 255 / .28) 45%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .7s var(--ease-out-expo);
+}
+.mh-btn:hover { transform: translateY(-2px); }
+.mh-btn:hover::after { transform: translateX(120%); }
+.mh-btn:active { transform: translateY(0) scale(.98); }
+
+.mh-card {
+  transition: transform .45s var(--ease-out-expo), box-shadow .45s var(--ease-out-soft);
+}
+.mh-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px -30px rgb(22 31 24 / .4);
+}
+
+.mh-image-frame {
+  isolation: isolate;
+  overflow: hidden;
+}
+.mh-image-zoom {
+  transition: transform 1.25s var(--ease-out-expo);
+  will-change: transform;
+}
+.group:hover .mh-image-zoom,
+.mh-image-frame:hover .mh-image-zoom {
+  transform: scale(1.06);
+}
+
+.mh-link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size .35s var(--ease-out-expo), color .25s ease;
+}
+.mh-link-underline:hover { background-size: 100% 1px; }
+
+.mh-header-shell {
+  transition: background-color .35s ease, box-shadow .35s ease, border-color .35s ease, transform .35s var(--ease-out-expo);
+}
+.mh-header-shell.is-scrolled {
+  backdrop-filter: blur(14px);
+  background: rgb(234 226 213 / .9);
+  box-shadow: 0 14px 40px -28px rgb(22 31 24 / .45);
+  border-color: rgb(32 45 35 / .14);
+}
+
+.mh-grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: .04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.mh-stagger > *:nth-child(1) { animation-delay: .05s; }
+.mh-stagger > *:nth-child(2) { animation-delay: .14s; }
+.mh-stagger > *:nth-child(3) { animation-delay: .23s; }
+.mh-stagger > *:nth-child(4) { animation-delay: .32s; }
+
+/* Concept-render treatment for before/after placeholders (no real "before" photo yet) */
+.mh-concept img { filter: grayscale(1) sepia(.18) contrast(1.18) brightness(1.08); }
+.mh-concept::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgb(110 90 68 / .16) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgb(110 90 68 / .16) 0 1px, transparent 1px 48px),
+    rgb(234 226 213 / .38);
+  mix-blend-mode: multiply;
+}
+
+/* Drafting-grid overlay for the architectural design stage */
+.mh-blueprint {
+  background:
+    repeating-linear-gradient(0deg, rgb(211 191 153 / .22) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, rgb(211 191 153 / .22) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(0deg, rgb(211 191 153 / .08) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(90deg, rgb(211 191 153 / .08) 0 1px, transparent 1px 16px);
+  mix-blend-mode: screen;
+}
+
+/* Ambient contour overlay (components/moodhaus/topo-drift.tsx) */
+.mh-drift {
+  --drift-color: var(--accent);
+  --drift-glint: #f3e6c8;
+  --drift-opacity: .16;
+  overflow: hidden;
+  opacity: var(--drift-opacity);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.mh-drift[data-tone="bronze"] { --drift-color: var(--bronze); --drift-glint: var(--accent); --drift-opacity: .22; }
+.mh-drift-lines {
+  position: absolute;
+  inset: -14%;
+  overflow: hidden;
+  background: var(--drift-color);
+  -webkit-mask: url(/brand/topo.svg) center / cover no-repeat;
+  mask: url(/brand/topo.svg) center / cover no-repeat;
+  animation: mh-drift 95s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.mh-drift-lines--alt { -webkit-mask-image: url(/brand/topo-2.svg); mask-image: url(/brand/topo-2.svg); }
+.mh-drift-lines--reverse { animation-name: mh-drift-reverse; animation-duration: 110s; }
+.mh-drift-sheen {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent 0%, var(--drift-glint) 50%, transparent 100%);
+  animation: mh-sheen 16s cubic-bezier(.45, 0, .25, 1) infinite;
+  will-change: transform;
+}
+@keyframes mh-drift {
+  from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  to { transform: translate3d(-4%, 2.5%, 0) rotate(-2deg) scale(1.06); }
+}
+@keyframes mh-drift-reverse {
+  from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05); }
+  to { transform: translate3d(3.5%, -2%, 0) rotate(1.6deg) scale(1); }
+}
+@keyframes mh-sheen {
+  0% { transform: translateX(-110%); }
+  55%, 100% { transform: translateX(240%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-drift-lines, .mh-drift-sheen { animation: none !important; }
+  .mh-drift-sheen { display: none; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .mh-card:hover,
+  .mh-btn:hover { transform: none; }
+  .group:hover .mh-image-zoom,
+  .mh-image-frame:hover .mh-image-zoom { transform: none; }
+  .mh-btn::after { display: none; }
+}
+
+@keyframes mh-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="mh-rise"] { animation: none !important; }
+}
+
+/* ---------- Allaie Aisha personal site ---------- */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: clip; }
+.aa-name { font-family: var(--font-sans), sans-serif; font-weight: 300; letter-spacing: .28em; margin-right: -.28em; line-height: 1; }
+.aa-rule { display: block; height: 1px; width: 3.25rem; background: currentColor; opacity: .7; }
+.aa-frame { border-radius: 6px; overflow: hidden; isolation: isolate; }
+.aa-hairline { background: linear-gradient(90deg, transparent, var(--accent), transparent); height: 1px; }
+.aa-line-in { animation: aa-line-in 1.6s var(--ease-out-expo) both; transform-origin: left center; }
+@keyframes aa-line-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.aa-letter { display: inline-block; animation: aa-letter 1.4s var(--ease-out-expo) both; }
+@keyframes aa-letter { from { opacity: 0; transform: translateY(.35em); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+.aa-snap { scroll-snap-type: x mandatory; scroll-padding-inline: 1.5rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.aa-snap::-webkit-scrollbar { display: none; }
+.aa-snap > * { scroll-snap-align: start; }
