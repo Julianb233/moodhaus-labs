@@ -105,7 +105,7 @@ export const projects: Project[] = [
     image: media.duskPools,
     gallery: [media.duskPools, media.livingRoom, media.reflectingPool],
     category: "residences",
-    scope: ["Architectural design", "Landscape architecture", "3D visualization"],
+    scope: ["Architectural design", "Landscape design", "3D visualization"],
     size: "7,800 sq ft · 0.6 acre",
     badge: "Featured",
     brief:
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     image: media.reflectingPool,
     gallery: [media.reflectingPool, media.greenPath, media.fountain],
     category: "landscape",
-    scope: ["Landscape architecture", "Hardscape & water features", "Lighting design"],
+    scope: ["Landscape design", "Hardscape & water features", "Lighting design"],
     size: "1.1 acre garden",
     badge: "New",
     brief: "Turn a steep, unused slope into the best room of the house.",
@@ -214,7 +214,7 @@ export const services = [
     number: "01",
     title: "Design",
     subtitle: "Architecture & landscape",
-    text: "Custom residences, additions, and complete landscape architecture shaped around how you live and the land you live on.",
+    text: "Custom residences, additions, and complete landscape design shaped around how you live and the land you live on.",
     image: media.villa,
   },
   {
@@ -226,9 +226,9 @@ export const services = [
   },
   {
     number: "03",
-    title: "Transform",
-    subtitle: "Delivery & oversight",
-    text: "We stay with the project from permits to final planting, coordinating builders and craftspeople so the vision arrives intact.",
+    title: "Hand off",
+    subtitle: "A complete design package",
+    text: "Drawings, renders, planting and lighting plans handed to your builder as one clear set, and we stay on call for design questions.",
     image: media.reflectingPool,
   },
 ]
@@ -237,7 +237,7 @@ export const process = [
   { step: "Private consultation", text: "A conversation on site or in the studio about how you want to live." },
   { step: "Concept & visualization", text: "Massing, landscape strategy, and photoreal renders you can walk through." },
   { step: "Design development", text: "Materials, planting, lighting, and every detail resolved with you." },
-  { step: "Build & transform", text: "We guide the build through to the final stone, so the result matches the vision." },
+  { step: "Hand-off to your builder", text: "A complete package of drawings, renders and plans for your builder, with us on call for design questions." },
 ]
 
 export const testimonials = [
@@ -273,7 +273,7 @@ export interface Transformation {
   /**
    * Photo of the site before the work, taken from the same spot as `after`.
    * PLACEHOLDER: until the studio's own photos are added, leave this out and the slider
-   * shows a concept-render treatment of the finished photo, labelled "Concept".
+   * shows a drawn treatment of the finished photo on the "Before" side.
    */
   before?: string
   projectId?: string
@@ -284,7 +284,7 @@ export const transformations: Transformation[] = [
     id: "la-jolla-pool-terrace",
     title: "Pool terrace",
     location: "La Jolla",
-    scope: "Landscape architecture · Pool · Lighting",
+    scope: "Landscape design · Pool · Lighting",
     summary: "A sloping lawn regraded into a limestone terrace, infinity-edge pool, and low garden walls lit for evenings outside.",
     after: media.duskPools,
     projectId: "bird-rock-residence",
@@ -347,6 +347,6 @@ export const footerLinks = [
   { label: "Architecture", href: "/architecture" },
   { label: "Landscape", href: "/landscape" },
   { label: "3D visualization", href: "/visualization" },
-  { label: "Concept to completion", href: "/process" },
+  { label: "Our process", href: "/process" },
   { label: "Book a consultation", href: "/consultation" },
 ]

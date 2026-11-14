@@ -11,7 +11,7 @@ const links = [
   { label: "Architecture", href: "/architecture" },
   { label: "Landscape", href: "/landscape" },
   { label: "3D", href: "/visualization" },
-  { label: "Process", href: "/process" },
+  { label: "Before & after", href: "/before-after" },
   { label: "Studio", href: "/studio" },
 ]
 

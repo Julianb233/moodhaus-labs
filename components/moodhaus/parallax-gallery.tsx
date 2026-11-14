@@ -16,8 +16,8 @@ export function ParallaxGallery() {
           <div className="absolute inset-0 bg-gradient-to-b from-deep-green/80 via-deep-green/25 to-deep-green/90" />
         </div>
 
-        <div data-depth-type className="absolute left-0 top-[12%] whitespace-nowrap font-display text-[17vw] font-light leading-none tracking-[0.12em] text-transparent [-webkit-text-stroke:1px_rgb(211_191_153_/_.55)]">
-          SAN DIEGO · PACIFIC · SAN DIEGO · PACIFIC
+        <div data-depth-type aria-hidden="true" className="absolute left-6 top-[10%] whitespace-nowrap font-display text-[11vw] font-light leading-none tracking-[0.14em] text-transparent [-webkit-text-stroke:1px_rgb(211_191_153_/_.75)] sm:text-[8vw] lg:left-8 lg:text-[6.5vw]">
+          SAN DIEGO COUNTY · PACIFIC · SAN DIEGO COUNTY
         </div>
 
         {/* Left column: slow */}

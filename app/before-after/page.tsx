@@ -2,23 +2,27 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { Header } from "@/components/moodhaus/header"
 import { Footer } from "@/components/moodhaus/footer"
-import { PageHero } from "@/components/moodhaus/page-hero"
+import { PageMotion } from "@/components/moodhaus/page-motion"
+import { ChapterHero, NextChapter } from "@/components/moodhaus/chapter-hero"
 import { CTABanner } from "@/components/moodhaus/cta-banner"
 import { BeforeAfter } from "@/components/moodhaus/before-after"
-import { media, transformations } from "@/lib/moodhaus-content"
+import { transformations } from "@/lib/moodhaus-content"
+import { chapters } from "@/lib/disciplines"
 
-export const metadata = { title: "Before & after" }
+export const metadata = { title: "Before & after", description: "Drag across San Diego sites to compare them before and after Moodhaus Labs designed the home and garden." }
 
 export default function BeforeAfterPage() {
+  const chapter = chapters[3]
   return (
     <main className="min-h-screen">
+      <PageMotion />
       <Header />
-      <PageHero eyebrow="Before & after" title="The same ground," accent="transformed." intro="Drag across each image to compare the site as we found it with the finished home and garden." image={media.sunsetPalmsPool} imageAlt="Infinity pool with palm trees at sunset" />
+      <ChapterHero chapter={chapter} intro="Drag across each image to compare the site as we found it with the home and garden we designed for it." />
 
       <section className="bg-background py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl gap-24 px-6 lg:px-8">
           {transformations.map((item, i) => (
-            <article key={item.id} className="grid items-center gap-10 lg:grid-cols-12">
+            <article key={item.id} data-reveal className="grid items-center gap-10 lg:grid-cols-12">
               <div className={"lg:col-span-8 " + (i % 2 === 1 ? "lg:order-2" : "")}>
                 <BeforeAfter after={item.after} before={item.before} alt={`${item.title}, ${item.location}`} className="rounded-[6px]" aspect="aspect-[4/3] lg:aspect-[16/10]" sizes="(min-width: 1024px) 65vw, 100vw" priority={i === 0} />
               </div>
@@ -37,6 +41,7 @@ export default function BeforeAfterPage() {
           ))}
         </div>
       </section>
+      <NextChapter current={chapter.key} />
       <CTABanner />
       <Footer />
     </main>

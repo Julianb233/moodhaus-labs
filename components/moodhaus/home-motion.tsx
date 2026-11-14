@@ -160,7 +160,7 @@ export function HomeMotion() {
         const held = { trigger: depth, start: "top top", end: "bottom bottom", scrub: true }
         const through = { trigger: depth, start: "top bottom", end: "bottom top", scrub: true }
         gsap.fromTo("[data-depth-bg]", { scale: 1.14, yPercent: 0 }, { scale: 1, yPercent: -4, ease: "none", scrollTrigger: held })
-        gsap.fromTo("[data-depth-type]", { xPercent: 0 }, { xPercent: -32, ease: "none", scrollTrigger: through })
+        gsap.fromTo("[data-depth-type]", { xPercent: 0 }, { xPercent: -18, ease: "none", scrollTrigger: through })
         q("[data-depth-layer]").forEach(layer => {
           const speed = parseFloat(layer.dataset.depthLayer || "1")
           gsap.fromTo(

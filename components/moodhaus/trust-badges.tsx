@@ -1,11 +1,11 @@
 import Link from "next/link"
-import { Compass, Layers, Sparkles, Trees } from "lucide-react"
+import { Columns2, Compass, Sparkles, Trees } from "lucide-react"
 
 const badges = [
   { icon: Compass, label: "Architectural design", href: "/architecture" },
-  { icon: Trees, label: "Landscape architecture", href: "/landscape" },
+  { icon: Trees, label: "Landscape design", href: "/landscape" },
   { icon: Sparkles, label: "Photoreal 3D visualization", href: "/visualization" },
-  { icon: Layers, label: "Concept to completion", href: "/process" },
+  { icon: Columns2, label: "Before & after", href: "/before-after" },
 ]
 
 const places = ["La Jolla", "Rancho Santa Fe", "Del Mar", "Coronado", "Point Loma", "Fairbanks Ranch", "Carmel Valley", "Solana Beach"]
@@ -24,8 +24,8 @@ export function TrustBadges() {
       </div>
       <div className="overflow-hidden border-t border-primary/10 bg-primary py-4 text-accent">
         <div className="mh-marquee flex w-max gap-0 font-serif text-2xl italic">
-          <span className="whitespace-pre pr-0">Designing across coastal San Diego  ·  {line}</span>
-          <span className="whitespace-pre" aria-hidden="true">Designing across coastal San Diego  ·  {line}</span>
+          <span className="whitespace-pre pr-0">Designing across San Diego County  ·  {line}</span>
+          <span className="whitespace-pre" aria-hidden="true">Designing across San Diego County  ·  {line}</span>
         </div>
       </div>
     </section>

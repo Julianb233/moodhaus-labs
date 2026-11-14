@@ -36,7 +36,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-20 flex flex-col justify-between gap-3 border-t border-primary-foreground/10 pt-6 text-[11px] uppercase tracking-[0.2em] text-primary-foreground/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} Moodhaus Labs · San Diego, California</p>
+          <p>© {new Date().getFullYear()} Moodhaus Labs · San Diego County, California</p>
           <p>Design | Visualize | Transform</p>
           <p className="normal-case tracking-normal">Imagery: Unsplash &amp; Pexels</p>
         </div>

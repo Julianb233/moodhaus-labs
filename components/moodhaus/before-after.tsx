@@ -30,8 +30,8 @@ export function BeforeAfter({ after, before, alt, className, aspect = "aspect-[4
   const dragging = useRef(false)
   const touched = useRef(false)
   const concept = !before
-  const beforeLabel = concept ? "Concept" : "Before"
-  const afterLabel = concept ? "Completed" : "After"
+  const beforeLabel = "Before"
+  const afterLabel = "After"
 
   const fromClientX = useCallback((clientX: number) => {
     const box = frame.current?.getBoundingClientRect()

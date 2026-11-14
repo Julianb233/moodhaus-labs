@@ -18,7 +18,7 @@ export function DisciplineDoors() {
               Four disciplines, <em className="text-accent">one studio.</em>
             </h2>
           </div>
-          <p className="max-w-sm leading-relaxed text-primary-foreground/70">Architecture, landscape and visualization under one roof, carried from the first sketch to the day you move in.</p>
+          <p className="max-w-sm leading-relaxed text-primary-foreground/70">Architecture, landscape and visualization under one roof, carried from the first sketch to a complete design your builder can build.</p>
         </div>
       </div>
       <div className="mx-auto mt-14 grid max-w-[96rem] gap-3 px-3 sm:px-6 lg:flex lg:h-[78vh] lg:min-h-[560px] lg:gap-3 lg:px-8 lg:[&:has(a:hover)>a:not(:hover)]:opacity-70">

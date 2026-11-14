@@ -14,7 +14,7 @@ const cormorant = Cormorant_Garamond({
 const siteUrl = "https://moodhauslabs.com"
 const title = "Moodhaus Labs — Architecture & Landscape Design, San Diego"
 const description =
-  "Moodhaus Labs designs exceptional homes and landscapes across coastal San Diego. Design, visualize, and transform with founder and principal designer Allaie Aisha."
+  "Moodhaus Labs designs exceptional homes and landscapes across San Diego County, from the coast to the canyons. Architecture, landscape design and photoreal 3D with founder and principal designer Allaie Aisha."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -23,9 +23,10 @@ export const metadata: Metadata = {
   keywords: [
     "Moodhaus Labs",
     "San Diego architect",
+    "San Diego County landscape design",
     "luxury landscape design San Diego",
     "La Jolla architect",
-    "Rancho Santa Fe landscape architect",
+    "Rancho Santa Fe landscape design",
     "Del Mar home design",
     "3D architectural visualization",
   ],

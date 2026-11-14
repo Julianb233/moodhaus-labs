@@ -4,7 +4,7 @@ import { chapters, type Chapter } from "@/lib/disciplines"
 import { cn } from "@/lib/utils"
 
 /** Full-bleed opening for a discipline page, with a chapter index across the bottom. */
-export function ChapterHero({ chapter, intro }: { chapter: Chapter; intro: string }) {
+export function ChapterHero({ chapter, intro, eyebrow }: { chapter: Chapter; intro: string; eyebrow?: string }) {
   return (
     <section className="relative h-[100svh] min-h-[640px] overflow-hidden bg-primary text-primary-foreground">
       <div className="absolute inset-0">
@@ -14,7 +14,7 @@ export function ChapterHero({ chapter, intro }: { chapter: Chapter; intro: strin
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(32,45,35,.55)_0%,rgba(32,45,35,.15)_30%,rgba(32,45,35,.55)_60%,rgba(32,45,35,.92)_100%)]" />
       </div>
       <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-10 lg:px-8">
-        <p data-reveal className="mh-eyebrow mb-6 text-accent">Chapter {chapter.number} / 04</p>
+        <p data-reveal className="mh-eyebrow mb-6 text-accent">{eyebrow ?? `Chapter ${chapter.number} / 04`}</p>
         <h1 data-reveal className="max-w-5xl font-serif text-[15vw] font-light leading-[.9] sm:text-8xl lg:text-[8.5rem]">
           {chapter.title}
           <br />
