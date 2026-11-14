@@ -8,10 +8,11 @@ import { Wordmark } from "./logo"
 
 const links = [
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Services", href: "/#capabilities" },
-  { label: "Before & after", href: "/before-after" },
-  { label: "The studio", href: "/studio" },
-  { label: "Process", href: "/#process" },
+  { label: "Architecture", href: "/architecture" },
+  { label: "Landscape", href: "/landscape" },
+  { label: "3D", href: "/visualization" },
+  { label: "Process", href: "/process" },
+  { label: "Studio", href: "/studio" },
 ]
 
 export function Header() {
@@ -41,7 +42,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3" aria-label="Moodhaus Labs home">
           <Wordmark />
         </Link>
-        <nav className="hidden items-center gap-9 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-7 xl:gap-9 lg:flex" aria-label="Main navigation">
           {links.map(link => (
             <Link key={link.href} href={link.href} className="mh-link-underline mh-eyebrow text-[11px] opacity-80 hover:opacity-100 mh-transition">
               {link.label}
@@ -61,13 +62,13 @@ export function Header() {
           >
             Book a consultation <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
-          <button type="button" onClick={() => setOpen(!open)} className="rounded-full p-2 md:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+          <button type="button" onClick={() => setOpen(!open)} className="rounded-full p-2 lg:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
       {open && (
-        <nav className="mx-1 mt-2 rounded-3xl border border-primary/10 bg-background p-4 shadow-lg md:hidden" aria-label="Mobile navigation">
+        <nav className="mx-1 mt-2 max-h-[calc(100svh-6rem)] overflow-y-auto rounded-3xl border border-primary/10 bg-background p-4 shadow-lg lg:hidden" aria-label="Mobile navigation">
           {[...links, { label: "Book a consultation", href: "/consultation" }].map(link => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-2xl px-4 py-3 font-serif text-2xl text-primary hover:bg-card">
               {link.label}

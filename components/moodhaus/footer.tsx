@@ -12,7 +12,7 @@ export function Footer() {
         <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="/" aria-label="Moodhaus Labs home" className="inline-block text-accent">
-              <LogoLockup className="text-5xl" />
+              <LogoLockup className="text-[2.35rem] sm:text-5xl" />
             </Link>
             <p className="mt-8 max-w-sm font-serif text-xl italic leading-relaxed text-primary-foreground/70">‘{studio.tagline}’</p>
             <div className="mt-7 flex gap-3">

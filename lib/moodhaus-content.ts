@@ -340,55 +340,13 @@ export const transformations: Transformation[] = [
 /* Capabilities, shown as one (illustrative) La Jolla home taken through all four */
 /* -------------------------------------------------------------------------- */
 
-export const capabilityDemo = {
-  name: "Casa Paloma",
-  place: "La Jolla Farms",
-  note: "Illustrative demo project",
-}
-
-export const capabilities = [
-  {
-    key: "design",
-    label: "Architectural design",
-    title: "A plan drawn from the bluff",
-    text: "We start on the land: the ocean bearing, the evening wind, the line of the cliff. The house becomes three low pavilions under one roof plane, every room turned toward the Pacific or the garden.",
-    facts: ["0.9-acre ocean bluff lot", "Three pavilions, one roof plane", "Every room faces water or garden"],
-    image: media.archModel,
-    alt: "White architectural study model in tall grass at golden hour",
-  },
-  {
-    key: "landscape",
-    label: "Landscape architecture",
-    title: "A garden that feels like the tropics",
-    text: "King and kentia palms, bird of paradise, and silver coastal agave, layered so the garden reads lush all year on a fraction of the water. Garden rooms step down toward the pool and the view.",
-    facts: ["Palms, bird of paradise, agave", "Drip irrigation and rain capture", "Garden rooms stepping to the pool"],
-    image: media.palmGarden,
-    alt: "Tall palm trees above a modern backyard garden",
-  },
-  {
-    key: "visualize",
-    label: "Photoreal 3D visualization",
-    title: "Stand on the terrace before it exists",
-    text: "Every surface, fixture, and plant is modelled, so you can see the pool at 7:40 on a June evening and walk the house room by room. Decisions are made with confidence, long before ground is broken.",
-    facts: ["Golden hour, dusk, and night studies", "Room-by-room walkthrough films", "Materials chosen in the render"],
-    image: media.villaTwilight,
-    alt: "Tropical villa with a lit pool at twilight",
-  },
-  {
-    key: "complete",
-    label: "Concept to completion",
-    title: "Handed over with the lights on",
-    text: "One team from permits to the final stone. We coordinate the builder and craftspeople, visit the site every week, and hand over a finished home with the garden planted and the lighting set.",
-    facts: ["One team, permit to final stone", "Weekly site visits", "Garden, lighting, and art in place"],
-    image: media.infinityPalms,
-    alt: "Infinity pool among palm trees overlooking white modern houses",
-  },
-]
-
 export const footerLinks = [
   { label: "Portfolio", href: "/portfolio" },
   { label: "Before & after", href: "/before-after" },
   { label: "The studio", href: "/studio" },
-  { label: "Services", href: "/#capabilities" },
+  { label: "Architecture", href: "/architecture" },
+  { label: "Landscape", href: "/landscape" },
+  { label: "3D visualization", href: "/visualization" },
+  { label: "Concept to completion", href: "/process" },
   { label: "Book a consultation", href: "/consultation" },
 ]

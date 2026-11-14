@@ -21,7 +21,7 @@ export function ParallaxGallery() {
         </div>
 
         {/* Left column: slow */}
-        <div data-depth-layer="0.45" className="absolute left-[5%] top-[14%] w-[40vw] sm:w-[24vw] lg:max-w-[400px]">
+        <div data-depth-layer="0.45" className="absolute left-[5%] top-[16%] w-[46vw] sm:w-[24vw] lg:max-w-[400px]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] border border-accent/25 mh-shadow-lg">
             <Image src={media.poolLounge} alt="Modern home with pool and lounge chairs" fill sizes="(min-width: 640px) 26vw, 42vw" className="object-cover" />
           </div>
@@ -33,7 +33,7 @@ export function ParallaxGallery() {
           </div>
         </div>
         {/* Right column: medium */}
-        <div data-depth-layer="0.85" className="absolute right-[5%] top-[30%] w-[48vw] sm:w-[30vw] lg:max-w-[520px]">
+        <div data-depth-layer="0.85" className="absolute right-[5%] top-[34%] w-[50vw] sm:w-[30vw] lg:max-w-[520px]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] mh-shadow-lg sm:aspect-[4/3]">
             <Image src={media.stoneSunset} alt="Modern home with stone accents at sunset" fill sizes="(min-width: 640px) 32vw, 50vw" className="object-cover" />
           </div>

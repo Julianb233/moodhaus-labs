@@ -21,6 +21,9 @@ export function Process() {
           <Link href="/consultation" className="mh-btn mt-9 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
             Request a consultation <ArrowUpRight className="h-4 w-4" />
           </Link>
+          <Link href="/process" className="mh-link-underline mt-6 flex w-fit items-center gap-2 text-xs uppercase tracking-[0.22em] text-primary-foreground/80">
+            The full process <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
         <ol data-process className="relative grid gap-0">
           <span data-process-line className="absolute left-[1.35rem] top-2 h-[calc(100%-1rem)] w-px origin-top bg-accent/60" aria-hidden="true" />

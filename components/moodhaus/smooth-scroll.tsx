@@ -7,6 +7,9 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
+// iOS Safari resizes the viewport as its toolbars show and hide; re-measuring on every one of
+// those makes pinned sections jump. Only real resizes (orientation, window) trigger a refresh.
+ScrollTrigger.config({ ignoreMobileResize: true })
 
 /**
  * Site-wide motion plumbing:
