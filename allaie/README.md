@@ -15,3 +15,12 @@ drifting gold contour lines.
 npm install
 npm run dev
 ```
+
+## After every ship
+
+1. Build passes (`npm run build`), commit, push to the PR branch.
+2. Deploy to production on Vercel (project `allaie-aisha`) and check the changed pages return 200 on allaieaisha.com.
+3. Update the Notion 2nd Brain in the same session:
+   - Project page "Moodhaus Labs — Websites": add a row to the allaieaisha.com change log, tick open items.
+   - CRM contact "Allaie Aisha — Moodhaus Labs": sites, socials, what's still needed.
+   - Domain Collection row "allaieaisha.com" if hosting or DNS changed.
