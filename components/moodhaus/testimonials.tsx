@@ -1,9 +1,11 @@
 import { testimonials } from "@/lib/moodhaus-content"
+import { TopoDrift } from "./topo-drift"
 
 export function Testimonials() {
   return (
-    <section className="overflow-hidden bg-background py-28 sm:py-36">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-background py-28 sm:py-36">
+      <TopoDrift tone="bronze" reverse />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mh-eyebrow mb-5 text-walnut">In our clients’ words</p>
           <h2 className="font-serif text-5xl font-light leading-none text-primary sm:text-7xl">

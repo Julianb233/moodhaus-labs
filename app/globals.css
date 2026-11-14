@@ -187,7 +187,53 @@ h1, h2, h3 { text-wrap: balance; }
 .mh-stagger > *:nth-child(3) { animation-delay: .23s; }
 .mh-stagger > *:nth-child(4) { animation-delay: .32s; }
 
+/* Ambient contour overlay (components/moodhaus/topo-drift.tsx) */
+.mh-drift {
+  --drift-color: var(--accent);
+  --drift-glint: #f3e6c8;
+  --drift-opacity: .16;
+  overflow: hidden;
+  opacity: var(--drift-opacity);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.mh-drift[data-tone="bronze"] { --drift-color: var(--bronze); --drift-glint: var(--accent); --drift-opacity: .22; }
+.mh-drift-lines {
+  position: absolute;
+  inset: -14%;
+  overflow: hidden;
+  background: var(--drift-color);
+  -webkit-mask: url(/brand/topo.svg) center / cover no-repeat;
+  mask: url(/brand/topo.svg) center / cover no-repeat;
+  animation: mh-drift 95s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.mh-drift-lines--alt { -webkit-mask-image: url(/brand/topo-2.svg); mask-image: url(/brand/topo-2.svg); }
+.mh-drift-lines--reverse { animation-name: mh-drift-reverse; animation-duration: 110s; }
+.mh-drift-sheen {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(105deg, transparent 0%, var(--drift-glint) 50%, transparent 100%);
+  animation: mh-sheen 16s cubic-bezier(.45, 0, .25, 1) infinite;
+  will-change: transform;
+}
+@keyframes mh-drift {
+  from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  to { transform: translate3d(-4%, 2.5%, 0) rotate(-2deg) scale(1.06); }
+}
+@keyframes mh-drift-reverse {
+  from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05); }
+  to { transform: translate3d(3.5%, -2%, 0) rotate(1.6deg) scale(1); }
+}
+@keyframes mh-sheen {
+  0% { transform: translateX(-110%); }
+  55%, 100% { transform: translateX(240%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .mh-drift-lines, .mh-drift-sheen { animation: none !important; }
+  .mh-drift-sheen { display: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: .01ms !important;

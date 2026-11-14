@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { media, studio } from "@/lib/moodhaus-content"
+import { TopoDrift } from "./topo-drift"
 
 export function CTABanner() {
   return (
@@ -10,6 +11,7 @@ export function CTABanner() {
         <Image src={media.pathDusk} alt="Modern white house with an illuminated pathway at dusk" fill sizes="100vw" className="object-cover opacity-55" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-deep-green via-deep-green/70 to-transparent" />
+      <TopoDrift variant={2} reverse opacity={0.2} />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="mh-eyebrow mb-5 text-accent">Limited commissions each year</p>

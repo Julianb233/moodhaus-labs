@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { TopoLines } from "./topo-lines"
+import { TopoDrift } from "./topo-drift"
 
 export function PageHero({ eyebrow, title, accent, intro, image, imageAlt }: { eyebrow: string; title: string; accent: string; intro: string; image?: string; imageAlt?: string }) {
   return (
@@ -10,8 +10,8 @@ export function PageHero({ eyebrow, title, accent, intro, image, imageAlt }: { e
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/30" />
         </div>
       )}
-      <div className="absolute inset-0 text-accent/20 [mask-image:linear-gradient(to_left,black,transparent_70%)]" aria-hidden="true">
-        <TopoLines className="h-full w-full" />
+      <div className="absolute inset-0 [mask-image:linear-gradient(to_left,black,transparent_75%)]" aria-hidden="true">
+        <TopoDrift opacity={0.28} />
       </div>
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <p className="mh-eyebrow mb-6 text-accent">{eyebrow}</p>

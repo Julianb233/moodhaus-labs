@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { media, studio } from "@/lib/moodhaus-content"
+import { TopoDrift } from "./topo-drift"
 
 const statement =
   "We design homes and gardens that feel inevitable — as if the architecture grew out of the land, the light, and the way you want to live."
@@ -8,7 +9,8 @@ const statement =
 export function IntroStatement() {
   return (
     <section id="intro" className="relative overflow-hidden bg-background py-28 sm:py-40">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1.35fr_.65fr] lg:items-end lg:px-8">
+      <TopoDrift tone="bronze" variant={2} />
+      <div className="relative mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[1.35fr_.65fr] lg:items-end lg:px-8">
         <div>
           <p className="mh-eyebrow mb-8 text-walnut">The Moodhaus approach</p>
           <p data-word-reveal className="font-serif text-4xl font-light leading-[1.12] text-primary sm:text-6xl lg:text-[4.4rem]">

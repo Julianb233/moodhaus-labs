@@ -2,14 +2,12 @@ import Link from "next/link"
 import { Instagram, Mail, Phone } from "lucide-react"
 import { footerLinks, studio } from "@/lib/moodhaus-content"
 import { LogoLockup } from "./logo"
-import { TopoLines } from "./topo-lines"
+import { TopoDrift } from "./topo-drift"
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-deep-green text-primary-foreground">
-      <div className="absolute inset-0 text-accent/10" aria-hidden="true">
-        <TopoLines className="h-full w-full" />
-      </div>
+      <TopoDrift variant={2} opacity={0.12} />
       <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8">
         <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>

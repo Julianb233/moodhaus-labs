@@ -1,14 +1,12 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { process } from "@/lib/moodhaus-content"
-import { TopoLines } from "./topo-lines"
+import { TopoDrift } from "./topo-drift"
 
 export function Process() {
   return (
     <section id="process" className="relative overflow-clip bg-primary py-28 text-primary-foreground sm:py-36">
-      <div className="absolute -right-1/4 top-0 h-full w-full text-accent/15" aria-hidden="true">
-        <TopoLines className="h-full w-full" />
-      </div>
+      <TopoDrift />
       <div className="relative mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <p className="mh-eyebrow mb-5 text-accent">How we work</p>
